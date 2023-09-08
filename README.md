@@ -1,6 +1,6 @@
 # Figures
 
-## Reward Basics
+## Part I: Reward Basics
 
 ### Total Reward Daily
 ![Total Reward Daily](total_reward_daily.png)
@@ -14,15 +14,15 @@
 ### Validator Reward Mean
 ![Validator Reward Mean](validator_reward_mean.png)
 
-## Reward Makeup
-### Reward3 Correlation Daily
-![Reward3 Correlation Daily](reward3_correlation_daily.png)
+## Part II: Reward Taxonomy
 
-### Reward3 Correlation Epoch
-![Reward3 Correlation Epoch](reward3_correlation_epoch.png)
 
-### Reward3 Histogram Epoch
-![Reward3 Histogram Epoch](reward3_histogram_epoch.png)
+
+### Reward4 Histogram Daily
+![Reward4 Histogram Daily](reward4_histogram_daily.png)
+
+### Reward4 Histogram Epoch
+![Reward4 Histogram Epoch](reward4_histogram_epoch.png)
 
 ### Reward3 Timeseries Percentage Daily
 ![Reward3 Timeseries Percentage Daily](reward3_timeseries_Percentage_daily.png)
@@ -36,11 +36,17 @@
 ### Reward3 Timeseries Epoch
 ![Reward3 Timeseries Epoch](reward3_timeseries_epoch.png)
 
+### Reward4 Correlation Daily
+![Reward4 Correlation Daily](reward4_correlation_daily.png)
 
-## Index Basics
+### Reward4 Correlation Epoch
+![Reward4 Correlation Epoch](reward4_correlation_epoch.png)
+
+
+## Part III Decentralization Index
 
 ### Index Boxplots
-![Index Boxplots](index_boxplots.png)
+![Index Boxplots](index_boxplot.png)
 
 ### Index Timeseries
 ![Index Timeseries](index_timeseries.png)
