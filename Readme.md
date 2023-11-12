@@ -1,126 +1,35 @@
-## Category 1: Proposer
-![figures/Gini_autocorrelation_proposer.png](figures/Gini_autocorrelation_proposer.png)
+# README for Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository
 
-![figures/Gini_decomposition_proposer.png](figures/Gini_decomposition_proposer.png)
+This repository hosts the datasets and Python codebase for the analysis of beacon chain rewards in the Ethereum 2.0 Proof of Stake (PoS) framework. It is designed to facilitate comprehensive investigations into the dynamics of consensus rewards on the Ethereum blockchain, tailored for academics, blockchain developers, and other stakeholders.
 
-![figures/HHI_autocorrelation_proposer.png](figures/HHI_autocorrelation_proposer.png)
+## Table of Contents
+- [README for Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository](#readme-for-ethereum-20-pos-beacon-chain-rewards-analysis-repository)
+  - [Table of Contents](#table-of-contents)
+  - [Repository Structure](#repository-structure)
+    - [Code](#code)
+    - [Data](#data)
+    - [Figures](#figures)
+    - [Script](#script)
+  - [Getting Started](#getting-started)
 
-![figures/HHI_decomposition_proposer.png](figures/HHI_decomposition_proposer.png)
+## Repository Structure
 
-![figures/Nakamoto_autocorrelation_proposer.png](figures/Nakamoto_autocorrelation_proposer.png)
+### Code
+This folder contains the Python code for data processing, primarily developed in Python and encapsulated within Jupyter Notebook environments.
 
-![figures/Nakamoto_decomposition_proposer.png](figures/Nakamoto_decomposition_proposer.png)
+### Data
+Here, you'll find the raw data in small CSV files, encompassing various aspects of beacon chain rewards and related metrics.
 
-![figures/ShannonEntropy_autocorrelation_proposer.png](figures/ShannonEntropy_autocorrelation_proposer.png)
+### Figures
+Contains visualizations of the processed data, including graphs, charts, and other graphical representations.
 
-![figures/ShannonEntropy_decomposition_proposer.png](figures/ShannonEntropy_decomposition_proposer.png)
+### Script
+This folder holds the scripts for data collection from Ethereum's blockchain and other sources.
 
-![figures/index_Correlations_proposer.png](figures/index_Correlations_proposer.png)
-
-![figures/index_boxplot_proposer.png](figures/index_boxplot_proposer.png)
-
-![figures/index_timeseries_proposer.png](figures/index_timeseries_proposer.png)
-
-![figures/validator_count_proposer.png](figures/validator_count_proposer.png)
-
-![figures/validator_reward_mean_proposer.png](figures/validator_reward_mean_proposer.png)
-
-## Category 2: Attester
-![figures/Gini_autocorrelation_attester.png](figures/Gini_autocorrelation_attester.png)
-
-![figures/Gini_decomposition_attester.png](figures/Gini_decomposition_attester.png)
-
-![figures/HHI_autocorrelation_attester.png](figures/HHI_autocorrelation_attester.png)
-
-![figures/HHI_decomposition_attester.png](figures/HHI_decomposition_attester.png)
-
-![figures/Nakamoto_autocorrelation_attester.png](figures/Nakamoto_autocorrelation_attester.png)
-
-![figures/Nakamoto_decomposition_attester.png](figures/Nakamoto_decomposition_attester.png)
-
-![figures/ShannonEntropy_autocorrelation_attester.png](figures/ShannonEntropy_autocorrelation_attester.png)
-
-![figures/ShannonEntropy_decomposition_attester.png](figures/ShannonEntropy_decomposition_attester.png)
-
-![figures/index_Correlations_attester.png](figures/index_Correlations_attester.png)
-
-![figures/index_boxplot_attester.png](figures/index_boxplot_attester.png)
-
-![figures/index_timeseries_attester.png](figures/index_timeseries_attester.png)
-
-![figures/validator_count_attester.png](figures/validator_count_attester.png)
-
-![data/validator_count_attester.png](data/validator_count_attester.png)
-
-## Category 3: Sync
-![figures/Gini_autocorrelation_sync.png](figures/Gini_autocorrelation_sync.png)
-
-![figures/Gini_decomposition_sync.png](figures/Gini_decomposition_sync.png)
-
-![figures/HHI_autocorrelation_sync.png](figures/HHI_autocorrelation_sync.png)
-
-![figures/HHI_decomposition_sync.png](figures/HHI_decomposition_sync.png)
-
-![figures/Nakamoto_autocorrelation_sync.png](figures/Nakamoto_autocorrelation_sync.png)
-
-![figures/Nakamoto_decomposition_sync.png](figures/Nakamoto_decomposition_sync.png)
-
-![figures/ShannonEntropy_autocorrelation_sync.png](figures/ShannonEntropy_autocorrelation_sync.png)
-
-![figures/ShannonEntropy_decomposition_sync.png](figures/ShannonEntropy_decomposition_sync.png)
-
-![figures/index_Correlations_sync.png](figures/index_Correlations_sync.png)
-
-![figures/index_boxplot_sync.png](figures/index_boxplot_sync.png)
-
-![figures/index_timeseries_sync.png](figures/index_timeseries_sync.png)
-
-![figures/validator_count_sync.png](figures/validator_count_sync.png)
-
-![figures/validator_reward_mean_sync.png](figures/validator_reward_mean_sync.png)
-
-## Category 4: Others
-![figures/Gini_autocorrelation.png](figures/Gini_autocorrelation.png)
-
-![figures/Gini_decomposition.png](figures/Gini_decomposition.png)
-
-![figures/HHI_autocorrelation.png](figures/HHI_autocorrelation.png)
-
-![figures/HHI_decomposition.png](figures/HHI_decomposition.png)
-
-![figures/Nakamoto_autocorrelation.png](figures/Nakamoto_autocorrelation.png)
-
-![figures/Nakamoto_decomposition.png](figures/Nakamoto_decomposition.png)
-
-![figures/ShannonEntropy_autocorrelation.png](figures/ShannonEntropy_autocorrelation.png)
-
-![figures/ShannonEntropy_decomposition.png](figures/ShannonEntropy_decomposition.png)
-
-![figures/index_Correlations.png](figures/index_Correlations.png)
-
-![figures/index_boxplot.png](figures/index_boxplot.png)
-
-![figures/index_timeseries.png](figures/index_timeseries.png)
-
-![figures/reward3_timeseries_daily.png](figures/reward3_timeseries_daily.png)
-
-![figures/reward3_timeseries_epoch.png](figures/reward3_timeseries_epoch.png)
-
-![figures/reward3_timeseries_Percentage_daily.png](figures/reward3_timeseries_Percentage_daily.png)
-
-![figures/reward3_timeseries_Percentage_epoch.png](figures/reward3_timeseries_Percentage_epoch.png)
-
-![figures/reward4_correlation_epoch.png](figures/reward4_correlation_epoch.png)
-
-![figures/reward4_correlation_daily.png](figures/reward4_correlation_daily.png)
-
-![figures/reward4_histogram_epoch.png](figures/reward4_histogram_epoch.png)
-
-![figures/total_reward_epoch.png](figures/total_reward_epoch.png)
-
-![figures/total_reward_daily.png](figures/total_reward_daily.png)
-
-![figures/validator_count.png](figures/validator_count.png)
-
-![figures/validator_reward_mean.png](figures/validator_reward_mean.png)
-
+## Getting Started
+1. Clone the repository.
+2. Install Python and required libraries (`requirements.txt`).
+3. Run data collection scripts in the `script` folder.
+4. Explore the `data` folder for datasets.
+5. Process and analyze data using the Jupyter Notebooks in the `code` folder.
+6. View or create visualizations in the `figures` folder.
