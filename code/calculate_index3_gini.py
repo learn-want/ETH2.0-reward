@@ -91,7 +91,8 @@ def index_calc(data, start, end, index_type = index):
     return IndexValues
 
 if __name__ == "__main__":
-    reward=read_large_csv('/local/scratch/exported/Ethereum_token_txs_data/rewards/total_rewards_daily_validator_each_validator_appear_once_daily.csv')
+    #please change the path of total_rewards_daily_each_validator.csv to your local path
+    reward=read_large_csv('/local/scratch/exported/Ethereum_token_txs_data/rewards/total_rewards_daily_each_validator.csv')
     reward['date']=reward['date'].astype('datetime64[ns]')
     # reward=reward[(reward['date']>pd.to_datetime('2022-09-15'))&(reward['date']<pd.to_datetime('2022-11-16'))]
     reward=reward.sort_values(by=['date'])
@@ -109,7 +110,7 @@ if __name__ == "__main__":
         for j in tqdm(reward1.columns):
             reward1[j]=reward1[j].apply(float)
             if indexs[i] in [index,gini,HHI]:
-                #把负数变成0
+                #convert negative to 0
                 if j in ['Total reward','Attestation reward']:
                     reward1[j]=np.where(reward1[j]<0,0,reward1[j])
                     data=reward1[j].reset_index()  
@@ -119,15 +120,15 @@ if __name__ == "__main__":
                 data['value']=data[j]
             else:
                 if j in ['Total reward','Attestation reward']:
-                    reward1[j]=np.where(reward1[j]<0,0,reward1[j])  #把负数变成0
+                    reward1[j]=np.where(reward1[j]<0,0,reward1[j])  #convert negative to 0
                     data=reward1[j].reset_index()  
                 else:
-                    #只保留大于0的数
+                    #only keep positive numbers
                     data=reward1[j][reward1[j] >= 0]
                     data=data.reset_index()  
                 data['value']=data[j]
             IndexValues=index_calc(data, start, end, index_type =indexs[i])
-            IndexValues.to_csv(f'/home/user/yan/github/ETH2.0-reward/figure/index_data_4/{index_name[i]}_{j}_1124.csv')
+            IndexValues.to_csv(f'../figure/index_data_3/{index_name[i]}_{j}_1124.csv')
             # res=pd.concat([res,IndexValues[f'{j}']],axis=1)
         # res.to_csv('./'+str(i)+'.csv')
         
