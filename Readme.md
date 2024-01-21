@@ -25,7 +25,8 @@ Contains visualizations of the processed data, including graphs, charts, and oth
 
 ### Script
 This folder holds the scripts for data collection from Ethereum's blockchain and other sources.
-please change this to your beacon chain url
+
+please change this to your beacon chain url.
 
 ## Getting Started
 1. Clone the repository.
