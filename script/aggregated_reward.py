@@ -16,7 +16,7 @@ sync['epoch']=sync['epoch'].astype('int64')
 sync['epoch_v_index']=sync['epoch'].astype('str')+'_'+sync['validator_index'].astype('int64').astype('str')
 sync1=sync.groupby(by=['epoch_v_index','epoch'],agg={'reward':'sum'})
 
-files=glob('../data/rewards/attestation_reward_*.csv')
+files=glob('../data/rewards/epoch*_attestation_reward.csv')
 for file in tqdm(files):
     start_epoch=file.split('/')[-1].split('.')[0].split('_')[-2]
     end_epoch=file.split('/')[-1].split('.')[0].split('_')[-1]
@@ -29,8 +29,6 @@ for file in tqdm(files):
     validator_reward_add_proposer_sync=validator_reward_add_proposer.join(sync1, on='epoch_v_index', how='left', rsuffix='_sync')
     validator_reward_add_proposer_sync=validator_reward_add_proposer_sync.drop(['epoch_proposer','epoch_sync'])
     validator_reward_add_proposer_sync.export_hdf5(f'../data/rewards/aggregated_rewards/aggregated_rewards_{start_epoch}_{end_epoch}.hdf5')
-
-
 
 timestamp=pd.read_csv('../data/slot_timestamp.csv')
 timestamp['time']=pd.to_datetime(timestamp['timestamp'],unit='s')
