@@ -91,8 +91,8 @@ def index_calc(data, start, end, index_type = index):
     return IndexValues
 
 if __name__ == "__main__":
-    #please change the path of Epoch_validator_reward.csv to your local path
-    reward=read_large_csv('/local/scratch/exported/Ethereum_token_txs_data/rewards/Epoch_validator_reward.csv')
+    #please change the path of date_validator_reward.csv to your local path
+    reward=read_large_csv('/local/scratch/exported/Ethereum_token_txs_data/rewards/date_validator_reward.csv')
     reward['date']=reward['date'].astype('datetime64[ns]')
     # reward=reward[(reward['date']>pd.to_datetime('2022-09-15'))&(reward['date']<pd.to_datetime('2022-11-16'))]
     reward=reward.sort_values(by=['date'])
