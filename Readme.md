@@ -21,7 +21,9 @@ This folder contains the Python code for data processing, primarily developed in
 
 ### Data
 Here, you'll find the sample data in small CSV files, encompassing various aspects of beacon chain rewards and related metrics.
-`date_validator_reward.csv` is not in this folder because of its large size. You can download it from Harvard Dataverse: url.
+`date_validator_reward.csv` is not in this folder because of its large size. You can download it from Harvard Dataverse:
+
+Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: "Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives"", https://doi.org/10.7910/DVN/OKQRS1, Harvard Dataverse. 
 
 ### Figures
 Contains visualizations of the processed data, including graphs, charts, and other graphical representations.
