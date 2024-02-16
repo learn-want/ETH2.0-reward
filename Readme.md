@@ -21,7 +21,7 @@ Located here is the Python code for data manipulation and analysis, principally 
 Sample datasets are provided in this directory in the form of compact CSV files. These samples represent a variety of beacon chain rewards and metrics.
 The `date_validator_reward.csv` file is not contained within this directory due to its size but can be retrieved from the Harvard Dataverse at:
 
-[Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: 'Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives'", Harvard Dataverse, V1.]
+> Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: 'Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives'", Harvard Dataverse, V1.
 
 ### Visualizations
 This section includes the data visualizations generated from the processed data, which range from simple charts to complex graphical plots.
