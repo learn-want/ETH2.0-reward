@@ -1,43 +1,40 @@
-# README for Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository
+# Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository README
 
-This repository hosts the sample datasets and Python codebase for the analysis of beacon chain rewards in the Ethereum 2.0 Proof of Stake (PoS) framework. It is designed to facilitate comprehensive investigations into the dynamics of consensus rewards on the Ethereum blockchain, tailored for academics, blockchain developers, and other stakeholders.
+Welcome to the repository for the analysis of beacon chain rewards within the Ethereum 2.0 Proof of Stake (PoS) framework. This repository is designed as a resource for academic researchers, blockchain developers, and anyone interested in studying the reward mechanisms of the Ethereum blockchain in detail. Specifically, the replication code for: "Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives."
 
-As the validator reward data set has a large size, and it is time-consuming to collect data from the Beacon chain node, we only provide a sample of the data set in this repository. The full data set of beacon chain rewards in the first two months after the Merge is available at Harvard Dataverse: url.
+## Contents
+- [Introduction](#ethereum-20-pos-beacon-chain-rewards-analysis-repository-readme)
+  - [Contents](#contents)
+  - [Structure of the Repository](#structure-of-the-repository)
+    - [Python Code](#python-code)
+    - [Sample Data](#sample-data)
+    - [Visualizations](#visualizations)
+    - [Data Collection Scripts](#data-collection-scripts)
+  - [Initial Setup](#initial-setup)
 
-## Table of Contents
-- [README for Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository](#readme-for-ethereum-20-pos-beacon-chain-rewards-analysis-repository)
-  - [Table of Contents](#table-of-contents)
-  - [Repository Structure](#repository-structure)
-    - [Code](#code)
-    - [Data](#data)
-    - [Figures](#figures)
-    - [Script](#script)
-  - [Getting Started](#getting-started)
+## Structure of the Repository
 
-## Repository Structure
+### Python Code
+Located here is the Python code for data manipulation and analysis, principally utilizing Jupyter Notebooks.
 
-### Code
-This folder contains the Python code for data processing, primarily developed in Python and encapsulated within Jupyter Notebook environments.
+### Sample Data
+Sample datasets are provided in this directory in the form of compact CSV files. These samples represent a variety of beacon chain rewards and metrics.
+The `date_validator_reward.csv` file is not contained within this directory due to its size but can be retrieved from the Harvard Dataverse at:
 
-### Data
-Here, you'll find the sample data in small CSV files, encompassing various aspects of beacon chain rewards and related metrics.
-`date_validator_reward.csv` is not in this folder because of its large size. You can download it from Harvard Dataverse:
+[Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: 'Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives'", Harvard Dataverse, V1.]
 
-Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: "Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives"", https://doi.org/10.7910/DVN/OKQRS1, Harvard Dataverse. 
+### Visualizations
+This section includes the data visualizations generated from the processed data, which range from simple charts to complex graphical plots.
 
-### Figures
-Contains visualizations of the processed data, including graphs, charts, and other graphical representations.
+### Data Collection Scripts
+Scripts used to gather data directly from the Ethereum blockchain are stored here. Please replace the placeholder with your specific beacon chain node URL.
 
-### Script
-This folder holds the scripts for data collection from Ethereum's blockchain and other sources.
-
-please change this to your beacon chain url.
-
-## Getting Started
-1. Clone the repository.
-2. Install Python and required libraries (`requirements.txt`).
-3. Get a beacon chain node URL.
-4. Run data collection scripts in the `script` folder to collect some sample    data.
-5. Explore the `data` folder for datasets. Download the full dataset named `date_validator_reward.csv` and put into in the data folder.
-6. Process and analyze data using the Jupyter Notebooks in the `code` folder.
-7. View or create visualizations in the `figures` folder.
+## Initial Setup
+To get started with this repository:
+1. Clone the repository to your local machine.
+2. Install Python and the necessary dependencies listed in `requirements.txt`.
+3. Acquire a beacon chain node URL to facilitate data collection.
+4. Execute the scripts within the `script` directory to gather initial datasets.
+5. Navigate to the `data` directory to review the datasets. For the full dataset, download the `date_validator_reward.csv` file from the provided Harvard Dataverse link and place it in the `data` directory.
+6. Utilize the Jupyter Notebooks in the `code` directory for data processing and analysis.
+7. Generate or examine existing visualizations in the `figures` directory.
