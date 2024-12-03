@@ -101,7 +101,7 @@ if __name__ == "__main__":
     reward1.set_index('date',inplace=True)
     # reward1=reward1/Decimal(10**9)
     # index_name=['nakamoto','index','gini','HHI'] #'nakamoto'
-    index_name=['index']
+    index_name=['Shannon_entropy']
     # indexs=[nakamoto,index,gini,HHI]
     indexs=[index]
     # index_name=[nakamoto]
