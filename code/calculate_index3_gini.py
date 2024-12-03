@@ -128,7 +128,7 @@ if __name__ == "__main__":
                     data=data.reset_index()  
                 data['value']=data[j]
             IndexValues=index_calc(data, start, end, index_type =indexs[i])
-            IndexValues.to_csv(f'../figure/index_data_3/{index_name[i]}_{j}_1124.csv')
+            IndexValues.to_csv(f'../figure/decentralization_metrics_data/{index_name[i]}_{j}_1124.csv')
             # res=pd.concat([res,IndexValues[f'{j}']],axis=1)
         # res.to_csv('./'+str(i)+'.csv')
         
