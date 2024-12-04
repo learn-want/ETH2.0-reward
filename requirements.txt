@@ -1,0 +1,14 @@
+numpy==1.24.3
+numpy==1.24.4
+pandas==2.0.1
+Requests==2.32.3
+tqdm==4.65.0
+vaex==4.17.0
+vaex_astro==0.9.3
+vaex_core==4.17.1
+vaex_hdf5==0.14.1
+vaex_jupyter==0.8.2
+vaex_ml==0.18.3
+vaex_server==0.9.0
+vaex_viz==0.5.4
+web3==7.2.0
