@@ -6,16 +6,16 @@ Welcome to the repository for the analysis of beacon chain rewards within the Et
 - [Introduction](#ethereum-20-pos-beacon-chain-rewards-analysis-repository-readme)
   - [Contents](#contents)
   - [Structure of the Repository](#structure-of-the-repository)
-    - [Python Code](#python-code)
+    - [Python Code](#python-code, including data collection scripts and data analysis scripts)
     - [Sample Data](#sample-data)
     - [Visualizations](#visualizations)
-    - [Data Collection Scripts](#data-collection-scripts)
   - [Initial Setup](#initial-setup)
 
 ## Structure of the Repository
 
 ### Python Code
-Located here is the Python code for data manipulation and analysis, principally utilizing Jupyter Notebooks.
+Located here is the Python code for data collection and analysis.
+the scripts in the sub-folder data_collection is used to gather data directly from the Ethereum blockchain are stored here. Please replace the placeholder with your specific beacon chain node URL.
 
 ### Sample Data
 Sample datasets are provided in this directory in the form of compact CSV files. These samples represent a variety of beacon chain rewards and metrics.
@@ -26,15 +26,12 @@ The `date_validator_reward.csv` file is not contained within this directory due 
 ### Visualizations
 This section includes the data visualizations generated from the processed data, which range from simple charts to complex graphical plots.
 
-### Data Collection Scripts
-Scripts used to gather data directly from the Ethereum blockchain are stored here. Please replace the placeholder with your specific beacon chain node URL.
-
 ## Initial Setup
 To get started with this repository:
 1. Clone the repository to your local machine.
-2. Install Python and the necessary dependencies listed in `requirements.txt`.
+2. Install Python and the necessary dependencies by executing conda env  `create -f environment.yml`.
 3. Acquire a beacon chain node URL to facilitate data collection.
-4. Execute the scripts within the `script` directory to gather initial datasets.
+4. Execute the scripts within the `code/data_collection` directory to gather initial datasets.
 5. Navigate to the `data` directory to review the datasets. For the full dataset, download the `date_validator_reward.csv` file from the provided Harvard Dataverse link and place it in the `data` directory.
 6. Utilize the Jupyter Notebooks in the `code` directory for data processing and analysis.
 7. Generate or examine existing visualizations in the `figures` directory.
