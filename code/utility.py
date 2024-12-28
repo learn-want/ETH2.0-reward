@@ -1,37 +1,51 @@
 import pandas as pd
-from tqdm import tqdm
-from datetime import timedelta
-import numpy as np
 
-def read_large_csv(file_path, chunk_size=1000000):
+def slot_to_timestamp(slot):
     """
-    This function reads a large CSV file in chunks and returns the accumulated data
-    file_path: str, the path to the CSV file
-    chunk_size: int, the size of each chunk to be read
-    the return value is a DataFrame with the accumulated data
+    This function converts a slot number to a timestamp
     """
-    accumulated_data = pd.DataFrame()
-    chunks = pd.read_csv(file_path, chunksize=chunk_size)
-    for chunk in chunks:
-        accumulated_data = pd.concat([accumulated_data, chunk])
-    return accumulated_data
+    return slot*12+1606824023
 
-def index_calc(data, start, end, index_type):
+def slot_to_epoch(slot):
     """
-    This function calculates the index values for a given time period
-    data: DataFrame, the data to be used for index calculation
-    start: datetime, the start date of the time period
-    end: datetime, the end date of the time period
-    index_type: function, the index calculation function, including shannon_entropy, HHI, gini,nakamoto
-    the return value is a DataFrame with the index values for each day in the time period
+    This function converts a slot number to an epoch number
     """
-    duration= pd.date_range(start=start, end=end)
-    days = np.size(duration)
-    IndexValues = pd.DataFrame(np.zeros(days), columns=[f'{data.columns[1]}'])
-    IndexValues['date'] = duration
+    return slot//32
 
-    for i in tqdm(range(0, days)):
-        start_date = start + timedelta(days=i)
-        end_date = start_date + timedelta(days=1)
-        IndexValues.loc[i,f'{data.columns[1]}'] = index_type(data[(data['date'].dt.date >= start_date) & (data['date'].dt.date < end_date)].copy())
-    return IndexValues
+def epoch_to_timestamp(epoch):
+    """
+    This function converts an epoch number to a timestamp
+    """
+    return epoch*384+1606824023
+
+def timestamp_to_epoch(timestamp):
+    """
+    This function converts a timestamp to an epoch number
+    """
+    return (timestamp-1606824023)//384
+
+# def date_to_timestamp(date):
+#     """
+#     This function converts a date to a timestamp
+#     """
+#     return pd.to_datetime(date,utc=True).timestamp()
+
+def date_to_timestamp(date_str, latest=False):
+
+    """
+
+    Convert a date string to a timestamp.
+
+    If latest is True, return the timestamp for the end of the day.
+
+    """
+
+    if latest:
+
+        dt = pd.to_datetime(date_str) + pd.Timedelta(days=1) - pd.Timedelta(seconds=1)
+
+    else:
+
+        dt = pd.to_datetime(date_str)
+
+    return dt.timestamp()
