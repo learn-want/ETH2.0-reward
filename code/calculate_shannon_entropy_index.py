@@ -27,7 +27,7 @@ if __name__ == "__main__":
     reward=reward.sort_values(by=['date'])
     reward.set_index('date',inplace=True)
     reward1=reward[['Total reward','Proposer reward','Attestation reward','Sync committee reward']]
-    index_name='Shannon_entropy'
+    index_name='Shannon'
     for j in tqdm(reward1.columns):
         reward1[j]=reward1[j].astype(float)
         reward1.reset_index(inplace=True)
