@@ -2,58 +2,65 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 from datetime import date
-from utility import read_large_csv
-from utility import index_calc
 
-def gini(df):
+def calculate_gini_index(df, column_name):
     """
-    Compute Gini coefficient of a DataFrame with a 'value' column, in our case, it is reward data
-    df: DataFrame, the data to be used for Gini coefficient calculation
-    The return value is the Gini coefficient with the float type
+    计算DataFrame中指定列的Gini系数
+    df: DataFrame，包含要计算Gini系数的列
+    column_name: str，列名
+    返回值: float，Gini系数
     """
-    # Check if the DataFrame is empty or the 'value' column does not exist
-    if df.empty or 'value' not in df.columns:
-        return None 
-    # Extract the 'value' column and convert it to a sorted list
-    values = sorted(df['value'].tolist())
-    # Check if the list is empty
+    # 检查DataFrame是否为空或指定列是否存在
+    if df.empty or column_name not in df.columns:
+        return None
+    # 提取指定列并转换为排序后的列表
+    values = sorted(df[column_name].tolist())
+    # 检查列表是否为空
     if len(values) == 0:
         return None
-    # Compute the cumulative sum of the values
+    # 计算累积和
     cum_values = [0] + list(pd.Series(values).cumsum())
     n = len(values)
-    # Calculate Gini coefficient using the formula
+    # 使用公式计算Gini系数
     numer = sum([(i+1) * values[i] for i in range(n)])
     denom = n * sum(values)
     if denom == 0:
-        return None  # Avoid division by zero
+        return None  # 避免除以零
     gini = (2 * numer) / denom - (n + 1) / n
     return gini
 
-
 if __name__ == "__main__":
     start = date(2022,9,15)
-    end = date(2022,11,15)
-    #please change the path of date_validator_reward.csv to your local path
-    reward=read_large_csv('/local/scratch/exported/Ethereum_token_txs_data/rewards/date_validator_reward.csv')
-    reward['date']=reward['date'].astype('datetime64[ns]')
+    end = date(2024,1,1)
+    # 请更改 date_validator_reward.csv 的路径到你的本地路径
+    # reward=read_large_csv('/local/scratch/exported/Ethereum_token_txs_data/rewards/date_validator_reward.csv')
+    reward=pd.read_parquet('/local/scratch/exported/Ethereum_token_txs_data_TY_23/rewards/eth2_reward_ether/daily_validator_index_reward/total_validator_reward.parquet')
+    # reward['date']=reward['date'].astype('datetime64[ns]')
+    reward['date']=pd.to_datetime(reward['date']).dt.date
     # reward=reward[(reward['date']>pd.to_datetime('2022-09-15'))&(reward['date']<pd.to_datetime('2022-11-16'))]
     reward=reward.sort_values(by=['date'])
-    reward1=reward[['date','Total reward','Proposer reward','Attestation reward','Sync committee reward']]
-    reward1.set_index('date',inplace=True)
+    reward.set_index('date',inplace=True)
+    reward1=reward[['Total reward','Proposer reward','Attestation reward','Sync committee reward']]
+    # reward1=reward[['Sync committee reward']]
     index_name='gini'
     for j in tqdm(reward1.columns):
-        reward1[j]=reward1[j].apply(float)
-        #convert negative to 0
+        reward1[j]=reward1[j].astype(float)
+        # 将负数转换为0
         if j in ['Total reward','Attestation reward']:
             reward1[j]=np.where(reward1[j]<0,0,reward1[j])
-            data=reward1[j].reset_index()  
+            reward1.reset_index(inplace=True)
+            data=reward1
         else:
-            data=reward1[j][reward1[j] >= 0]
-            data=data.reset_index()  
-        data['value']=data[j]
-        IndexValues=index_calc(data, start, end, index_type =gini)
-        IndexValues.to_csv(f'../figure/decentralization_metrics_data/{index_name}_{j}_1124.csv')
+            data=reward1[j][reward1[j] > 0]
+            data.reset_index(inplace=True)
+        file_name="_".join([i.lower() for i in j.split(' ')])
+        with open(f'/home/user/yan/github/ETH2.0-reward/data/decentralization_metrics_data/{index_name}_{j}.csv', 'a') as file:
+            file.write(f'date,{j}\n')
+            for day in tqdm(pd.date_range(start, end)):
+                daily_data = data[(data['date'] == day.date())]
+                if not daily_data.empty:
+                    gini_value = calculate_gini_index(daily_data, j)
+                    file.write(f'{day.date()},{gini_value}\n')
 
         
    
