@@ -3,6 +3,7 @@ from glob import glob
 import pandas as pd
 import os
 
+
 ##Generate the aggregated reward data combining the proposer, attestation and sync reward
 proposer_reward=pd.read_parquet('data/raw_reward_data/proposer_reward_epoch_147262_147487.parquet')
 proposer_reward['epoch']=proposer_reward['epoch'].astype('int64')
@@ -40,7 +41,7 @@ validator_reward_add_proposer_sync_time=validator_reward_add_proposer_sync.merge
 # validator_reward_add_proposer_sync_time=validator_reward_add_proposer_sync_time.drop(['epoch_epoch'])
 validator_reward_add_proposer_sync_time['date']=validator_reward_add_proposer_sync_time['time'].dt.date
     
-epoch_attestor_reward=validator_reward_add_proposer_sync_time.groupby(['epoch','validator_index'])[['final_total_reward','proposer_total_reward','attestation_total_reward','sync_total_reward']].sum().reset_index()
-epoch_attestor_reward.to_csv(f'data/raw_reward_data/aggregated_rewards/epoch_validator_aggregated_data_{start_epoch}_{end_epoch}.csv',header=True,index=False)
-epoch_attestor_reward.to_parquet(f'data/raw_reward_data/aggregated_rewards/epoch_validator_aggregated_data_{start_epoch}_{end_epoch}.parquet')
+epoch_attestor_reward=validator_reward_add_proposer_sync_time.groupby(['date','validator_index'])[['final_total_reward','proposer_total_reward','attestation_total_reward','sync_total_reward']].sum().reset_index()
+epoch_attestor_reward.to_csv(f'data/raw_reward_data/aggregated_rewards/daily_validator_aggregated_data_2022_09_17.csv',header=True,index=False)
+epoch_attestor_reward.to_parquet(f'data/raw_reward_data/aggregated_rewards/daily_validator_aggregated_data_2022_09_17.parquet')
 
