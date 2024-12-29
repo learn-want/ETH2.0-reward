@@ -17,15 +17,17 @@ Welcome to the repository for the analysis of beacon chain rewards within the Et
 Located here is the Python code for data collection and analysis.
 The scripts in the sub-folder [data_collection](code/data_collection) are used to gather data directly from the Ethereum blockchain. Please replace the placeholder with your specific beacon chain node URL.
 
+The scripts in the sub-folder [decentralization_metrics_calculation](code/decentralization_metrics_calculation) are used to calculate the decentralization metrics. Please firstly switch to ETH2.0-reward by executing `cd ETH2.0-reward`, then change the file path to your local path in the scripts, and execute the scripts.
+
 
 ### Data
 
-#### Aggregated reward data
-We offer one-year (from September 15, 2022, to September 15, 2023) aggregated reward data that specifies the various types of daily rewards for each validator. Due to its large size, this data is not included in this repository but can be accessed from the Harvard Dataverse at:
+#### Aggregated reward data on a daily basis
+We offer one-year (from September 15, 2022, to September 15, 2023) aggregated reward data that specifies the various types of daily rewards for each validator, named `total_validator_reward.parquet`. Due to its large size, this data is not included in this repository but can be accessed from the Harvard Dataverse at:
 
 > Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: 'Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives'", Harvard Dataverse, V1.
 
-we use the Parquet format to store data and save every 100 million entries as a separate file, there are 3 Parquet files, naming `date_validator_reward_0.parquet, date_validator_reward_1.parquet, and date_validator_reward_2.parquet` Each file includes the following fields.
+we use the Parquet format to store data to reduce the storage space, still this file `total_validator_reward.parquet` has 3.3GB.
 | **Variable**               | **Data Type** | **Unit** |
 |----------------------------|--------------|----------|
 | date                     | date        | count    |
@@ -34,6 +36,8 @@ we use the Parquet format to store data and save every 100 million entries as a 
 | attestation reward        | int64        | Ether    |
 | sync committee reward     | int64        | Ether    |
 | proposer reward           | int64        | Ether    |
+#### Aggregated reward data on an epoch basis
+Due to the large size of the whole data on an epoch basis, which is more than 1.5 TB, we only provide one day data which is on `2022-09-17`, the proposer reward and sync committee reward are in the [raw_reward_data](data/raw_reward_data) directory. However, the `attestation_reward_epoch_147262_147487.parquet` file is stored on the Harvard Dataverse due to its large size. Please download the file and put it in the [raw_reward_data](data/raw_reward_data) directory.
 
 #### decentralization_metrics_data
 This directory contains the decentralization metrics data, which includes the Gini coefficient, HHI,Shannon entropy, Nakamoto coefficient for each day. The data is stored in the csv format, and each file includes the date and the corresponding decentralization metrics.
@@ -44,10 +48,12 @@ This section includes the data visualizations generated from the processed data,
 ## Initial Setup
 To get started with this repository:
 1. Clone the repository to your local machine.
-2. cd into the repository directory by executing `cd ethereum-2.0-rewards-analysis`.
-2. Install Python and the necessary dependencies by executing conda env  `pip install -r requirements.txt`.
-3. Acquire a beacon chain node URL and put it into the data collection script in the [data_collection](code/data_collection).
-4. Execute the scripts within the [data_collection](code/data_collection) directory to gather initial datasets.
-5. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `date_validator_reward_0.parquet, date_validator_reward_1.parquet, and date_validator_reward_2.parquet` file from the provided Harvard Dataverse link and place it in the [data](data) directory.
-6. Utilize the code in the [data_collection](code) directory for data processing and analysis.
-7. Generate or examine existing visualizations in the [figure](figure) directory.
+2. Get an Beacon Chain Node URL or run a local node.
+please refer to [Teku](https://docs.teku.consensys.io/development/get-started/start-teku) to run the Teku cilent in the archive mode 
+3. cd into the repository directory by executing `cd ETH2.0-reward`.
+4. Install Python and the necessary dependencies by executing conda env  `pip install -r requirements.txt`.
+5. Acquire a beacon chain node URL and put it into the data collection script in the [data_collection](code/data_collection).
+6. Execute the scripts within the [data_collection](code/data_collection) directory to gather initial datasets.
+7. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `total_validator_reward.parquet` file from the provided Harvard Dataverse link and place it in the [data](data) directory.
+8. Utilize the code in the [data_collection](code) directory for data processing and analysis.
+9. Generate or examine existing visualizations in the [figure](figure) directory.
