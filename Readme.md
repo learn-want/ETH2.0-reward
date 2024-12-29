@@ -27,7 +27,7 @@ We offer one-year (from September 15, 2022, to September 15, 2023) aggregated re
 
 > Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: 'Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives'", Harvard Dataverse, V1.
 
-we use the Parquet format to store data to reduce the storage space, still this file `total_validator_reward.parquet` has 3.3GB.
+we use the Parquet format to store data to reduce the storage space, still this file `total_validator_reward.parquet` has 3.3GB, the variable description is as follows:
 | **Variable**               | **Data Type** | **Unit** |
 |----------------------------|--------------|----------|
 | date                     | date        | count    |
@@ -37,7 +37,7 @@ we use the Parquet format to store data to reduce the storage space, still this 
 | sync committee reward     | int64        | Ether    |
 | proposer reward           | int64        | Ether    |
 #### Aggregated reward data on an epoch basis
-Due to the large size of the whole data on an epoch basis, which is more than 1.5 TB, we only provide one day data which is on `2022-09-17`, the proposer reward and sync committee reward are in the [raw_reward_data](data/raw_reward_data) directory. However, the `attestation_reward_epoch_147262_147487.parquet` file is stored on the Harvard Dataverse due to its large size. Please download the file and put it in the [raw_reward_data](data/raw_reward_data) directory.
+Due to the large size of the whole reward data on an epoch basis, which is more than 1.5 TB, we only provide one day data which is on `2022-09-17`, the proposer reward and sync committee reward are in the [raw_reward_data](data/raw_reward_data) directory. However, the attestation reward`attestation_reward_epoch_147262_147487.parquet` file is stored on the Harvard Dataverse due to its large size. Please download the file and put it in the [raw_reward_data](data/raw_reward_data) directory.
 
 #### decentralization_metrics_data
 This directory contains the decentralization metrics data, which includes the Gini coefficient, HHI,Shannon entropy, Nakamoto coefficient for each day. The data is stored in the csv format, and each file includes the date and the corresponding decentralization metrics.
