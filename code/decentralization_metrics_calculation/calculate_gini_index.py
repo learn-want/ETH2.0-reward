@@ -32,20 +32,16 @@ def calculate_gini_index(df, column_name):
 if __name__ == "__main__":
     start = date(2022,9,15)
     end = date(2024,1,1)
-    # 请更改 date_validator_reward.csv 的路径到你的本地路径
-    # reward=read_large_csv('/local/scratch/exported/Ethereum_token_txs_data/rewards/date_validator_reward.csv')
-    reward=pd.read_parquet('/local/scratch/exported/Ethereum_token_txs_data_TY_23/rewards/eth2_reward_ether/daily_validator_index_reward/total_validator_reward.parquet')
-    # reward['date']=reward['date'].astype('datetime64[ns]')
+    # please change the file path to your local path
+    reward=pd.read_parquet('data/raw_reward_data/daily_validator_index_reward/total_validator_reward.parquet')
     reward['date']=pd.to_datetime(reward['date']).dt.date
-    # reward=reward[(reward['date']>pd.to_datetime('2022-09-15'))&(reward['date']<pd.to_datetime('2022-11-16'))]
     reward=reward.sort_values(by=['date'])
     reward.set_index('date',inplace=True)
     reward1=reward[['Total reward','Proposer reward','Attestation reward','Sync committee reward']]
-    # reward1=reward[['Sync committee reward']]
     index_name='gini'
     for j in tqdm(reward1.columns):
         reward1[j]=reward1[j].astype(float)
-        # 将负数转换为0
+        # change the negative value to 0
         if j in ['Total reward','Attestation reward']:
             reward1[j]=np.where(reward1[j]<0,0,reward1[j])
             reward1.reset_index(inplace=True)
@@ -54,7 +50,7 @@ if __name__ == "__main__":
             data=reward1[j][reward1[j] > 0]
             data.reset_index(inplace=True)
         file_name="_".join([i.lower() for i in j.split(' ')])
-        with open(f'/home/user/yan/github/ETH2.0-reward/data/decentralization_metrics_data/{index_name}_{j}.csv', 'a') as file:
+        with open(f'data/decentralization_metrics_data/{index_name}_{j}.csv', 'a') as file:
             file.write(f'date,{j}\n')
             for day in tqdm(pd.date_range(start, end)):
                 daily_data = data[(data['date'] == day.date())]

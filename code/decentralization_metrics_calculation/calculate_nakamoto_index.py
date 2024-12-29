@@ -10,8 +10,6 @@ def calculate_nakamoto(df,column_name):
     df: DataFrame, the data to be used for Nakamoto index calculation
     The return value is the Nakamoto index with the int type
     """
-    # validator_number=pd.read_csv('/home/user/yan/github/ETH2.0-reward/daily_validator_number_new.csv')
-    # validator_number_one_day=validator_number.loc[validator_number['date']==str((df['date'].dt.date.values[0])),'validator_index'].values[0]
     df[column_name] = df[column_name].astype(float)
     df.sort_values(by=[column_name],ascending=False,inplace=True)
     df.reset_index(inplace=True,drop=True)
@@ -30,9 +28,8 @@ if __name__ == "__main__":
     start = date(2022,9,15)
     end = date(2024,1,1)    
    #please change the path of date_validator_reward.csv to your local path
-    reward=pd.read_parquet('/local/scratch/exported/Ethereum_token_txs_data_TY_23/rewards/eth2_reward_ether/daily_validator_index_reward/total_validator_reward.parquet')
+    reward=pd.read_parquet('data/raw_reward_data/daily_validator_index_reward/total_validator_reward.parquet')
     reward['date']=pd.to_datetime(reward['date']).dt.date
-    # reward=reward[(reward['date']>pd.to_datetime('2022-09-15'))&(reward['date']<pd.to_datetime('2022-11-16'))]
     reward=reward.sort_values(by=['date'])
     reward.set_index('date',inplace=True)
     reward1=reward[['Total reward','Proposer reward','Attestation reward','Sync committee reward']]
@@ -48,7 +45,7 @@ if __name__ == "__main__":
             data=reward1[j][reward1[j] > 0]
             data.reset_index(inplace=True)
         file_name="_".join([i.lower() for i in j.split(' ')])
-        with open(f'/home/user/yan/github/ETH2.0-reward/data/decentralization_metrics_data/{index_name}_{j}.csv', 'a') as file:
+        with open(f'data/decentralization_metrics_data/{index_name}_{j}.csv', 'a') as file:
             reward_name=j.split(' ')[0]
             file.write(f'date,{reward_name.lower()}\n')
             for day in tqdm(pd.date_range(start, end)):
