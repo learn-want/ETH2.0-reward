@@ -31,7 +31,6 @@ with open(filename, 'a', newline='') as csvfile:
             fieldnames = block_reward.keys()
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             if slot==start_block:
-                # writer.writeheader() #追加时不重新写入header
                 writer.writerow(block_reward)
             else:
                 writer.writerow(block_reward)

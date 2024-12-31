@@ -1,7 +1,4 @@
-from tqdm import tqdm
-from glob import glob
 import pandas as pd
-import os
 
 ##Generate the aggregated reward data combining the proposer, attestation and sync reward
 proposer_reward=pd.read_parquet('data/raw_reward_data/proposer_reward_epoch_147262_147487.parquet')

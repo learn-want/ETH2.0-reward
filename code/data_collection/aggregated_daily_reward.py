@@ -1,7 +1,5 @@
-from tqdm import tqdm
-from glob import glob
 import pandas as pd
-import os
+
 
 
 ##Generate the aggregated reward data combining the proposer, attestation and sync reward

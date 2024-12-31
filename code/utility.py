@@ -24,12 +24,6 @@ def timestamp_to_epoch(timestamp):
     """
     return (timestamp-1606824023)//384
 
-# def date_to_timestamp(date):
-#     """
-#     This function converts a date to a timestamp
-#     """
-#     return pd.to_datetime(date,utc=True).timestamp()
-
 def date_to_timestamp(date_str, latest=False):
 
     """
