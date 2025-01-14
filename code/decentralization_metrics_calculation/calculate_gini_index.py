@@ -5,27 +5,21 @@ from datetime import date
 
 def calculate_gini_index(df, column_name):
     """
-    计算DataFrame中指定列的Gini系数
-    df: DataFrame，包含要计算Gini系数的列
-    column_name: str，列名
-    返回值: float，Gini系数
+    Calculate the Gini coefficient of a specified column in a DataFrame.
+    df: DataFrame containing the column to calculate the Gini coefficient.
+    column_name: str, the name of the column.
+    Returns: float, the Gini coefficient.
     """
-    # 检查DataFrame是否为空或指定列是否存在
     if df.empty or column_name not in df.columns:
         return None
-    # 提取指定列并转换为排序后的列表
     values = sorted(df[column_name].tolist())
-    # 检查列表是否为空
     if len(values) == 0:
         return None
-    # 计算累积和
-    cum_values = [0] + list(pd.Series(values).cumsum())
     n = len(values)
-    # 使用公式计算Gini系数
     numer = sum([(i+1) * values[i] for i in range(n)])
     denom = n * sum(values)
     if denom == 0:
-        return None  # 避免除以零
+        return None  
     gini = (2 * numer) / denom - (n + 1) / n
     return gini
 

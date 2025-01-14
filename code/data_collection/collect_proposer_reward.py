@@ -18,11 +18,11 @@ def get_block_rewards(block_id):
         return None
 
 # An example of how to use the function
-start_block = 0
-end_block = 1000000
-filename='your_file_path.csv' #please change this to your local path,do not put it in the data folder because it will be too large
+start_slot = 0
+end_slot = 1000000
+filename='your_file_path_proposer_reward.csv' #please change this to your local path,do not put it in the data folder because it will be too large
 with open(filename, 'a', newline='') as csvfile:
-    for slot in tqdm(range(start_block, end_block)):
+    for slot in tqdm(range(start_slot, end_slot)):
         rewards = get_block_rewards(slot)
         if rewards is not None:
             res = json.loads(rewards)
@@ -30,7 +30,7 @@ with open(filename, 'a', newline='') as csvfile:
             block_reward['slot']=slot
             fieldnames = block_reward.keys()
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if slot==start_block:
+            if slot==start_slot:
                 writer.writerow(block_reward)
             else:
                 writer.writerow(block_reward)

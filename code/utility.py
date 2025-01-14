@@ -43,3 +43,6 @@ def date_to_timestamp(date_str, latest=False):
         dt = pd.to_datetime(date_str)
 
     return dt.timestamp()
+
+def calculate_epoch_from_slot(slot_number):
+    return int(np.floor(slot_number/32))
