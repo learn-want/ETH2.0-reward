@@ -23,7 +23,7 @@ if __name__ == "__main__":
     start = date(2022,9,15)
     end = date(2024,1,1)
     #please change the path of date_validator_reward.csv to your local path
-    reward=pd.read_parquet('data/raw_reward_data/daily_validator_index_reward/total_validator_reward.parquet')
+    reward=pd.read_parquet('data/raw_reward_data/aggregated_rewards/total_validator_reward.parquet')
     reward['date']=pd.to_datetime(reward['date']).dt.date
     # reward=reward[(reward['date']>pd.to_datetime('2022-09-15'))&(reward['date']<pd.to_datetime('2022-11-16'))]
     reward=reward.sort_values(by=['date'])
