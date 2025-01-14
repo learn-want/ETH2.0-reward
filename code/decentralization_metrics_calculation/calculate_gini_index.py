@@ -15,8 +15,6 @@ def calculate_gini_index(df, column_name):
     values = sorted(df[column_name].tolist())
     if len(values) == 0:
         return None
-    # 计算累积和
-    cum_values = [0] + list(pd.Series(values).cumsum())
     n = len(values)
     numer = sum([(i+1) * values[i] for i in range(n)])
     denom = n * sum(values)

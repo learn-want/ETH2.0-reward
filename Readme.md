@@ -41,7 +41,8 @@ This directory contains the decentralization metrics data, which includes the Gi
 Located here is the Python code for data collection and analysis.
 The scripts in the sub-folder [data_collection](code/data_collection) are used to gather data directly from the Ethereum Beacon chain. Please replace the placeholder in the code with your specific beacon chain node URL. For the steps to execute the scripts, please refer to the [Initial Setup](#initial-setup) section.
 
-The scripts in the sub-folder [decentralization_metrics_calculation](code/decentralization_metrics_calculation) are used to calculate the decentralization metrics. Please firstly switch to ETH2.0-reward by executing `cd ETH2.0-reward`, then change the file path to your local path in the scripts, and execute the scripts.
+The scripts in the sub-folder [decentralization_metrics_calculation](code/decentralization_metrics_calculation) are used to calculate the decentralization metrics. 
+
 
 ### Visualizations
 This section includes the data visualizations generated from the processed data, which range from simple charts to complex graphical plots. You can find the visualizations in the [figure](figure) directory.
@@ -50,16 +51,17 @@ This section includes the data visualizations generated from the processed data,
 To get started with this repository:
 1. Clone the repository to your local machine.
 2. Get an Beacon Chain Node URL or run a local node.
-please refer to [Teku](https://docs.teku.consensys.io/development/get-started/start-teku) to run the Teku cilent in the archive mode 
+please refer to [Teku](https://docs.teku.consensys.io/development/get-started/start-teku) to run the Teku cilent in the archive mode.
 3. cd into the repository directory by executing `cd ETH2.0-reward`.
 4. Install Python and the necessary dependencies by executing conda env  `pip install -r requirements.txt`.
-5. Acquire a beacon chain node URL and put it into the data collection script in the [data_collection](code/data_collection).
-6. Execute the scripts within the [data_collection](code/data_collection) directory to gather initial datasets,please follow the steps below:
+5. Acquire a beacon chain node URL and put it into the data collection scripts in the [data_collection](code/data_collection).
+6. Switch to the code folder by executing `cd code`, and execute the scripts within the [data_collection](code/data_collection) directory to gather initial datasets,please follow the steps below:
     - run `get_attestation_reward.py`
     - run `get_proposer_reward.py`
     - run `get_sync_committee_reward.py`
-    - run `aggregated_epoch_reward.py`
-    - run `aggregated_daily_reward.py`
-7. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `total_validator_reward.parquet` file from the provided Harvard Dataverse link and place it in the [data](data) directory.
+    - run `aggregated_epoch_reward.py` to generate the aggregated reward data on an epoch basis.
+    - run `aggregated_daily_reward.py` to generate the aggregated reward data on a daily basis.
+7. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `total_validator_reward.parquet` file from the provided Harvard Dataverse link and place it in the [aggregated_rewards](data/raw_reward_data/aggregated_rewards) directory.
 8. Utilize the code in the [decentralization_metrics_calculation](code/decentralization_metrics_calculation/) directory for data processing and analysis.
-9. Generate or examine existing visualizations in the [figure](figure) directory.
+9. Run the `result_plots.ipynb` to  generate plots of the paper or examine visualizations in the [figure](figure) directory.
+10. To verify the data we collected, you can run the `data_cross_validation.ipynb` in the [code](code) directory.
