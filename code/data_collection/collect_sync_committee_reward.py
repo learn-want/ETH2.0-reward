@@ -18,3 +18,21 @@ def get_sync_committee_rewards(slot, committee_members=None):
         return response.json()
     else:
         return None
+
+# An example of how to use the function
+start_slot = 0
+end_slot = 1000000
+filename='your_file_path_sync_committee_reward.csv' #please change this to your local path,do not put it in the data folder because it will be too large
+with open(filename, 'a', newline='') as csvfile:
+    for slot in tqdm(range(start_slot, end_slot)):
+        rewards = get_sync_committee_rewards(slot)
+        if rewards is not None:
+            res = json.loads(rewards)
+            block_reward=res['data']
+            block_reward['slot']=slot
+            fieldnames = block_reward.keys()
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            if slot==start_slot:
+                writer.writerow(block_reward)
+            else:
+                writer.writerow(block_reward)
