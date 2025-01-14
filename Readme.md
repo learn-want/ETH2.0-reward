@@ -6,19 +6,12 @@ Welcome to the repository for the analysis of beacon chain rewards within the Et
 - [Introduction](#ethereum-20-pos-beacon-chain-rewards-analysis-repository-readme)
   - [Contents](#contents)
   - [Structure of the Repository](#structure-of-the-repository)
-    - [Python Code](#data-collection-and-analysis-scripts)
     - [Data](#data)
+    - [Python Code](#data-collection-and-analysis-scripts)
     - [Visualizations](#visualizations)
   - [Initial Setup](#initial-setup)
 
 ## Structure of the Repository
-
-### Python Code
-Located here is the Python code for data collection and analysis.
-The scripts in the sub-folder [data_collection](code/data_collection) are used to gather data directly from the Ethereum Beacon chain. Please replace the placeholder in the code with your specific beacon chain node URL. For the steps to execute the scripts, please refer to the [Initial Setup](#initial-setup) section.
-
-The scripts in the sub-folder [decentralization_metrics_calculation](code/decentralization_metrics_calculation) are used to calculate the decentralization metrics. Please firstly switch to ETH2.0-reward by executing `cd ETH2.0-reward`, then change the file path to your local path in the scripts, and execute the scripts.
-
 
 ### Data
 
@@ -37,10 +30,16 @@ we use the Parquet format to store data to reduce the storage space, still this 
 | sync committee reward     | int64        | Ether    |
 | proposer reward           | int64        | Ether    |
 #### Aggregated reward data on an epoch basis
-Due to the large size of the whole reward data on an epoch basis, which is more than 1.5 TB, we only provide one day data which is on `2022-09-17`, the proposer reward and sync committee reward are in the [raw_reward_data](data/raw_reward_data) directory. However, the attestation reward`attestation_reward_epoch_147262_147487.parquet` file is stored on the Harvard Dataverse due to its large size. Please download the file and put it in the [raw_reward_data](data/raw_reward_data) directory.
+Due to the large size of the whole reward data on an epoch basis, which is more than 1.5 TB, we only provide one day data which is on `2022-09-17`, the proposer reward and sync committee reward are in the [raw_reward_data](data/raw_reward_data) directory. However, the attestation reward`attestation_reward_epoch_147262_147487.parquet` file is stored on the Harvard Dataverse due to its large size. Please first download the file and put it in the [raw_reward_data](data/raw_reward_data) directory and execute the scripts later.
 
 #### decentralization_metrics_data
 This directory contains the decentralization metrics data, which includes the Gini coefficient, HHI,Shannon entropy, Nakamoto coefficient for each day. The data is stored in the csv format, and each file includes the date and the corresponding decentralization metrics.
+
+### Python Code
+Located here is the Python code for data collection and analysis.
+The scripts in the sub-folder [data_collection](code/data_collection) are used to gather data directly from the Ethereum Beacon chain. Please replace the placeholder in the code with your specific beacon chain node URL. For the steps to execute the scripts, please refer to the [Initial Setup](#initial-setup) section.
+
+The scripts in the sub-folder [decentralization_metrics_calculation](code/decentralization_metrics_calculation) are used to calculate the decentralization metrics. Please firstly switch to ETH2.0-reward by executing `cd ETH2.0-reward`, then change the file path to your local path in the scripts, and execute the scripts.
 
 ### Visualizations
 This section includes the data visualizations generated from the processed data, which range from simple charts to complex graphical plots. You can find the visualizations in the [figure](figure) directory.
@@ -57,7 +56,6 @@ please refer to [Teku](https://docs.teku.consensys.io/development/get-started/st
     - run `get_attestation_reward.py`
     - run `get_proposer_reward.py`
     - run `get_sync_committee_reward.py`
-   then, you can aggregate the data by executing the following script:
     - run `aggregated_epoch_reward.py`
     - run `aggregated_daily_reward.py`
 7. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `total_validator_reward.parquet` file from the provided Harvard Dataverse link and place it in the [data](data) directory.
