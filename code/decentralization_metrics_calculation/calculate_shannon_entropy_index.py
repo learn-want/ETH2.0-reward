@@ -19,7 +19,7 @@ def shannon_entropy(df,column_name):
 
 if __name__ == "__main__":
     start = date(2022,9,15)
-    end = date(2024,1,1)
+    end = date(2023,9,16)
     #please change the path of date_validator_reward.csv to your local path
     reward=pd.read_parquet('data/raw_reward_data/aggregated_rewards/total_validator_reward.parquet')
     reward['date']=pd.to_datetime(reward['date']).dt.date
@@ -37,8 +37,7 @@ if __name__ == "__main__":
             reward1.reset_index(inplace=True)
             data=reward1
         else:
-            data=reward1[j][reward1[j] > 0]
-            data.reset_index(inplace=True)
+            data=reward1[reward1[j] > 0]
         file_name="_".join([i.lower() for i in j.split(' ')])
         with open(f'data/decentralization_metrics_data/{index_name}_{j}_new.csv', 'a') as file:
             reward_name=j.split(' ')[0] 
