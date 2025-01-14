@@ -63,6 +63,6 @@ please refer to [Teku](https://docs.teku.consensys.io/development/get-started/st
     - run `aggregated_daily_reward.py` to generate the aggregated reward data on a daily basis.
     - If you just want to try to collect some example data, it is recommended to run `collect_reward_beacon.ipynb`.
 7. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `total_validator_reward.parquet` file from the provided Harvard Dataverse link and place it in the [aggregated_rewards](data/raw_reward_data/aggregated_rewards) directory.
-8.Switch to the root directory by executing `cd ETH2.0-reward` and utilize the code in the [decentralization_metrics_calculation](code/decentralization_metrics_calculation/) directory for data processing and analysis.
+8. Switch to the root directory by executing `cd ETH2.0-reward` and utilize the code in the [decentralization_metrics_calculation](code/decentralization_metrics_calculation/) directory for data processing and analysis.
 9. Run the `result_plots.ipynb` to  generate plots of the paper or examine visualizations in the [figure](figure) directory.
 10. To verify the data we collected, you can run the `data_cross_validation.ipynb` in the [code](code) directory.
