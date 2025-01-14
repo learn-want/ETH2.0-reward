@@ -21,6 +21,7 @@ We offer one-year (from September 15, 2022, to September 15, 2023) aggregated re
 > Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J., 2024, "Replication Data for: 'Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives'", Harvard Dataverse, V1.
 please firstly download the file and put it in the [aggregated_rewards](data/raw_reward_data/aggregated_rewards) directory.
 we use the Parquet format to store data to reduce the storage space, still this file `total_validator_reward.parquet` has 3.3GB, the variable description is as follows:
+
 | **Variable**               | **Data Type** | **Unit** |
 |----------------------------|--------------|----------|
 | date                     | date        | count    |
