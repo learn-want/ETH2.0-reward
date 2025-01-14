@@ -15,7 +15,7 @@ Welcome to the repository for the analysis of beacon chain rewards within the Et
 
 ### Python Code
 Located here is the Python code for data collection and analysis.
-The scripts in the sub-folder [data_collection](code/data_collection) are used to gather data directly from the Ethereum Beacon chain. Please replace the placeholder in the code with your specific beacon chain node URL. 
+The scripts in the sub-folder [data_collection](code/data_collection) are used to gather data directly from the Ethereum Beacon chain. Please replace the placeholder in the code with your specific beacon chain node URL. For the steps to execute the scripts, please refer to the [Initial Setup](#initial-setup) section.
 
 The scripts in the sub-folder [decentralization_metrics_calculation](code/decentralization_metrics_calculation) are used to calculate the decentralization metrics. Please firstly switch to ETH2.0-reward by executing `cd ETH2.0-reward`, then change the file path to your local path in the scripts, and execute the scripts.
 
@@ -53,7 +53,13 @@ please refer to [Teku](https://docs.teku.consensys.io/development/get-started/st
 3. cd into the repository directory by executing `cd ETH2.0-reward`.
 4. Install Python and the necessary dependencies by executing conda env  `pip install -r requirements.txt`.
 5. Acquire a beacon chain node URL and put it into the data collection script in the [data_collection](code/data_collection).
-6. Execute the scripts within the [data_collection](code/data_collection) directory to gather initial datasets.
+6. Execute the scripts within the [data_collection](code/data_collection) directory to gather initial datasets,please follow the steps below:
+    - run `get_attestation_reward.py`
+    - run `get_proposer_reward.py`
+    - run `get_sync_committee_reward.py`
+   then, you can aggregate the data by executing the following script:
+    - run `aggregated_epoch_reward.py`
+    - run `aggregated_daily_reward.py`
 7. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `total_validator_reward.parquet` file from the provided Harvard Dataverse link and place it in the [data](data) directory.
 8. Utilize the code in the [decentralization_metrics_calculation](code/decentralization_metrics_calculation/) directory for data processing and analysis.
 9. Generate or examine existing visualizations in the [figure](figure) directory.
