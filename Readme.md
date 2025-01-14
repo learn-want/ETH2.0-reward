@@ -55,7 +55,7 @@ please refer to [Teku](https://docs.teku.consensys.io/development/get-started/st
 3. cd into the repository directory by executing `cd ETH2.0-reward`.
 4. Install Python and the necessary dependencies by executing conda env  `pip install -r requirements.txt`.
 5. Acquire a beacon chain node URL and put it into the data collection scripts in the [data_collection](code/data_collection).
-6. Switch to the code folder by executing `cd code`, and execute the scripts within the [data_collection](code/data_collection) directory to gather initial datasets,please follow the steps below:
+6. Switch to the code folder by executing `cd code`, and execute the scripts within the [data_collection](code/data_collection) directory to gather full datasets,please follow the steps below:
     - run `get_attestation_reward.py`
     - run `get_proposer_reward.py`
     - run `get_sync_committee_reward.py`
