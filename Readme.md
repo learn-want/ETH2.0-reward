@@ -98,7 +98,7 @@ To set up the repository for data analysis:
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/learn-want/ETH2.0-reward.git
    cd ETH2.0-reward
    ```
 
@@ -132,7 +132,7 @@ To set up the repository for data analysis:
      ```
 
 5. **Download Full Dataset**:
-   - Download `total_validator_reward.parquet` from the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FHG36LO&showIngestSuccess=true&version=DRAFT) and place it in [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards).
+   - Download `total_validator_reward.parquet` from the [Harvard Dataverse](https://doi.org/10.7910/DVN/HG36LO) and place it in [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards).
 
 6. **Data Analysis**:
    - Use scripts in [`decentralization_metrics_calculation`](code/decentralization_metrics_calculation) for analysis.
