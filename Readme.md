@@ -1,10 +1,21 @@
-# Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository
+# <span style="font-family: Arial, sans-serif; font-size: 2em; color: #4CAF50;">Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository</span>
 
-Welcome to the repository for analyzing beacon chain rewards within the Ethereum 2.0 Proof of Stake (PoS) framework. This repository is intended for academic researchers, blockchain developers, and enthusiasts interested in studying the reward mechanisms and decentralization of the Ethereum blockchain. 
+<p style="font-family: Arial, sans-serif; font-size: 1.2em; line-height: 1.6;">
+Welcome to the repository for analyzing beacon chain rewards within the <strong>Ethereum 2.0 Proof of Stake (PoS)</strong> framework. This repository is intended for academic researchers, blockchain developers, and enthusiasts interested in studying the reward mechanisms and decentralization of the Ethereum blockchain.
+</p>
 
-This repository provides replication code and datasets for the working paper:  
-**"Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives"**  
-available on [arXiv:2312.02660](https://arxiv.org/abs/2312.02660).
+<p style="font-family: Arial, sans-serif; font-size: 1.2em; line-height: 1.6;">
+This repository provides replication code and datasets for the working paper:
+</p>
+
+<blockquote style="background-color: #f9f9f9; border-left: 5px solid #4CAF50; padding: 10px; font-family: Georgia, serif; font-size: 1.1em; line-height: 1.6;">
+<strong>"Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives"</strong>
+</blockquote>
+
+<p style="font-family: Arial, sans-serif; font-size: 1.2em; line-height: 1.6;">
+The full paper is available on <a href="https://arxiv.org/abs/2312.02660" style="color: #4CAF50; text-decoration: none;"><strong>arXiv:2312.02660</strong></a>.
+</p>
+
 
 ---
 
