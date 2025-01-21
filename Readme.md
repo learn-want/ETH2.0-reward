@@ -38,7 +38,7 @@ This repository includes key datasets for analyzing Ethereum 2.0 beacon chain re
 #### Aggregated Reward Data on a Daily Basis
 We provide one year (September 15, 2022 – September 15, 2023) of daily aggregated reward data for each validator. The dataset `total_validator_reward.parquet` includes various reward types. Due to its large size (3.3GB), the file is hosted on the Harvard Dataverse:
 
-> [Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone,Claudio J. 2025, "Replication Data for: Analyzing Reward Dynamics and Decentralization in Ethereum 2.0", Harvard Dataverse](https://doi.org/10.7910/DVN/HG36LO)
+> [Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, Claudio J. 2025, "Replication Data for: Analyzing Reward Dynamics and Decentralization in Ethereum 2.0", Harvard Dataverse](https://doi.org/10.7910/DVN/HG36LO)
 
 To use this data:
 > Download the file and place it in the [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards) directory.
