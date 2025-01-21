@@ -1,67 +1,138 @@
-# Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository README
+# Ethereum 2.0 PoS Beacon Chain Rewards Analysis Repository
 
-Welcome to the repository for the analysis of beacon chain rewards within the Ethereum 2.0 Proof of Stake (PoS) framework. This repository is designed as a resource for academic researchers, blockchain developers, and anyone interested in studying the reward mechanisms of the Ethereum blockchain in detail. Specifically, the replication code for: "Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives."
+Welcome to the repository for analyzing beacon chain rewards within the Ethereum 2.0 Proof of Stake (PoS) framework. This repository is intended for academic researchers, blockchain developers, and enthusiasts interested in studying the reward mechanisms and decentralization of the Ethereum blockchain. 
 
-## Contents
-- [Introduction](#ethereum-20-pos-beacon-chain-rewards-analysis-repository-readme)
-  - [Contents](#contents)
-  - [Structure of the Repository](#structure-of-the-repository)
-    - [Data](#data)
-    - [Python Code](#data-collection-and-analysis-scripts)
-    - [Visualizations](#visualizations)
-  - [Initial Setup](#initial-setup)
+This repository provides replication code and datasets for the working paper:  
+**"Analyzing Reward Dynamics and Decentralization in Ethereum 2.0: An Advanced Data Engineering Workflow and Comprehensive Datasets for Proof-of-Stake Incentives"**  
+available on [arXiv:2312.02660](https://arxiv.org/abs/2312.02660).
+
+---
+
+## Table of Contents
+- [Introduction](#ethereum-20-pos-beacon-chain-rewards-analysis-repository)
+- [Structure of the Repository](#structure-of-the-repository)
+  - [Data](#data)
+  - [Python Code](#python-code)
+  - [Visualizations](#visualizations)
+- [Initial Setup](#initial-setup)
+- [Reference](#reference)
+
+---
 
 ## Structure of the Repository
 
 ### Data
+This repository includes key datasets for analyzing Ethereum 2.0 beacon chain rewards and decentralization metrics.
 
-#### Aggregated reward data on a daily basis
-We offer one-year (from September 15, 2022, to September 15, 2023) aggregated reward data that specifies the various types of daily rewards for each validator, named `total_validator_reward.parquet`. Due to its large size, this data is not included in this repository but can be accessed from the Harvard Dataverse at:
+#### Aggregated Reward Data on a Daily Basis
+We provide one year (September 15, 2022 – September 15, 2023) of daily aggregated reward data for each validator. The dataset `total_validator_reward.parquet` includes various reward types. Due to its large size (3.3GB), the file is hosted on the Harvard Dataverse:
 
-> [Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, 2025, "Replication Data for: Analyzing Reward Dynamics and Decentralization in1 Ethereum 2.0: A Data Engineering Workflow and2 Datasets", Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FHG36LO&showIngestSuccess=true&version=DRAFT). please firstly download the file and put it in the [aggregated_rewards](data/raw_reward_data/aggregated_rewards) directory.
-we use the Parquet format to store data to reduce the storage space, still this file `total_validator_reward.parquet` has 3.3GB, the variable description is as follows:
+> [Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, 2025, "Replication Data for: Analyzing Reward Dynamics and Decentralization in Ethereum 2.0", Harvard Dataverse](https://doi.org/10.7910/DVN/HG36LO)
 
+To use this data:
+1. Download the file and place it in the [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards) directory.
+
+##### Dataset Overview
 | **Variable**               | **Data Type** | **Unit** |
-|----------------------------|--------------|----------|
-| date                     | date        | count    |
-| validator_index           | int64        | count    |
-| total reward     | int64        | Ether    |
-| attestation reward        | int64        | Ether    |
-| sync committee reward     | int64        | Ether    |
-| proposer reward           | int64        | Ether    |
-#### Aggregated reward data on an epoch basis
-Due to the large size of the whole reward data on an epoch basis, which is more than 1.5 TB, We only provide aggregated reward data for a single day on an epoch basis, specifically on `2022-09-17`. this data is named "epoch_validator_aggregated_data_147262_147487.parquet" and is located in [aggregated_rewards](data/raw_reward_data/aggregated_rewards) directory.
-This data is generated from   `proposer_reward_epoch_147262_147487.parquet`, `sync_reward_epoch_147262_147487.parquet` and `attestation_reward_epoch_147262_147487.parquet` files. The first two files are in the [aggregated_rewards](data/raw_reward_data/aggregated_rewards) directory. However, the attestation reward file is also stored on the Harvard Dataverse due to its large size. Please first download the file and put it in the [raw_reward_data](data/raw_reward_data) directory.
+|----------------------------|---------------|----------|
+| date                       | date          | count    |
+| validator_index            | int64         | count    |
+| total_reward               | int64         | Ether    |
+| attestation_reward         | int64         | Ether    |
+| sync_committee_reward      | int64         | Ether    |
+| proposer_reward            | int64         | Ether    |
 
-#### decentralization_metrics_data
-This directory contains the decentralization metrics data, which includes the Gini coefficient, HHI,Shannon entropy, Nakamoto coefficient for each day. The data is stored in the csv format, and each file includes the date and the corresponding decentralization metrics.
+#### Aggregated Reward Data on an Epoch Basis
+Due to its size (1.5TB), only one day's epoch data (September 17, 2022) is provided. The dataset `epoch_validator_aggregated_data_147262_147487.parquet` is stored in the [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards) directory.
+
+- **Source Files**:
+  - `proposer_reward_epoch_147262_147487.parquet`
+  - `sync_reward_epoch_147262_147487.parquet`
+  - `attestation_reward_epoch_147262_147487.parquet` (downloadable from the Harvard Dataverse; place it in the [`raw_reward_data`](data/raw_reward_data) directory).
+
+#### Decentralization Metrics Data
+This directory contains decentralization metrics such as:
+- Gini coefficient
+- HHI (Herfindahl-Hirschman Index)
+- Shannon entropy
+- Nakamoto coefficient
+
+The data is in CSV format, with daily metrics.
+
+
 
 ### Python Code
-Located here is the Python code for data collection and analysis.
-The scripts in the sub-folder [data_collection](code/data_collection) are used to gather data directly from the Ethereum Beacon chain. Please replace the placeholder in the code with your specific beacon chain node URL. For the steps to execute the scripts, please refer to the [Initial Setup](#initial-setup) section.
+The repository includes Python scripts for data collection, decentralization metrics calculation, and visualization:
 
-The scripts in the sub-folder [decentralization_metrics_calculation](code/decentralization_metrics_calculation) are used to calculate the decentralization metrics. 
+- **Data Collection**:
+  - Scripts are located in [`code/data_collection`](code/data_collection).
+  - Replace placeholders in the scripts with your beacon chain node URL.
 
+- **Decentralization Metrics Calculation**:
+  - Scripts are located in [`code/decentralization_metrics_calculation`](code/decentralization_metrics_calculation).
+  - These scripts compute metrics based on the collected data.
+
+---
 
 ### Visualizations
-This section includes the data visualizations generated from the processed data, which range from simple charts to complex graphical plots. You can find the visualizations in the [figure](figure) directory.
+Visualizations generated from the processed data include simple charts and complex plots. You can:
+
+- View existing visualizations in the [`figure`](figure) directory.
+- Generate plots using `result_plots.ipynb` to replicate figures from the working paper.
+
+---
 
 ## Initial Setup
-To get started with this repository:
-1. Clone the repository to your local machine.
-2. Get an Beacon Chain Node URL or run a local node.
-please refer to [Teku](https://docs.teku.consensys.io/development/get-started/start-teku) to run the Teku cilent in the archive mode.
-3. cd into the repository directory by executing `cd ETH2.0-reward`.
-4. Install Python and the necessary dependencies by executing conda env  `pip install -r requirements.txt`.
-5. Acquire a beacon chain node URL and put it into the data collection scripts in the [data_collection](code/data_collection).
-6. Switch to the code folder by executing `cd code`, and execute the scripts within the [data_collection](code/data_collection) directory to gather full datasets,please follow the steps below:
-    - run `get_attestation_reward.py`
-    - run `get_proposer_reward.py`
-    - run `get_sync_committee_reward.py`
-    - run `aggregated_epoch_reward.py` to generate the aggregated reward data on an epoch basis.
-    - run `aggregated_daily_reward.py` to generate the aggregated reward data on a daily basis.
-    - If you just want to try to collect some example data, it is recommended to run `collect_reward_beacon.ipynb`.
-7. Navigate to the [data](data) directory to review the datasets. For the full dataset, please download the `total_validator_reward.parquet` file from the provided Harvard Dataverse link and place it in the [aggregated_rewards](data/raw_reward_data/aggregated_rewards) directory.
-8. Switch to the root directory by executing `cd ETH2.0-reward` and utilize the code in the [decentralization_metrics_calculation](code/decentralization_metrics_calculation/) directory for data processing and analysis.
-9. Run the `result_plots.ipynb` to  generate plots of the paper or examine visualizations in the [figure](figure) directory.
-10. To verify the data we collected, you can run the `data_cross_validation.ipynb` in the [code](code) directory.
+To set up the repository for data analysis:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository_url>
+   cd ETH2.0-reward
+   ```
+
+2. **Install Dependencies**:
+   - Ensure Python is installed.
+   - Install required packages:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+3. **Beacon Chain Node**:
+   - Acquire a beacon chain node URL or run a local node.
+   - Refer to [Teku Documentation](https://docs.teku.consensys.io/development/get-started/start-teku) for setting up a local Teku client in archive mode.
+
+4. **Data Collection**:
+   - Navigate to the code directory:
+     ```bash
+     cd code
+     ```
+   - Run data collection scripts in the [`data_collection`](code/data_collection) directory:
+     ```bash
+     python get_attestation_reward.py
+     python get_proposer_reward.py
+     python get_sync_committee_reward.py
+     python aggregated_epoch_reward.py
+     python aggregated_daily_reward.py
+     ```
+   - To collect example data, use:
+     ```bash
+     jupyter notebook collect_reward_beacon.ipynb
+     ```
+
+5. **Download Full Dataset**:
+   - Download `total_validator_reward.parquet` from the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FHG36LO&showIngestSuccess=true&version=DRAFT) and place it in [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards).
+
+6. **Data Analysis**:
+   - Use scripts in [`decentralization_metrics_calculation`](code/decentralization_metrics_calculation) for analysis.
+   - Run `result_plots.ipynb` for visualizations.
+
+7. **Data Validation**:
+   - Validate collected data using `data_cross_validation.ipynb` in the [`code`](code) directory.
+
+---
+
+## Reference
+For further details on this analysis, please refer to our working paper:  
+**"Analyzing Reward Dynamics and Decentralization in Ethereum 2.0"**  
+Available on [arXiv:2312.02660](https://arxiv.org/abs/2312.02660).
