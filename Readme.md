@@ -30,7 +30,7 @@ We provide one year (September 15, 2022 – September 15, 2023) of daily aggrega
 > [Yan, Tao; Li, Shengnan; Kraner, Benjamin; Zhang, Luyao; Tessone, 2025, "Replication Data for: Analyzing Reward Dynamics and Decentralization in Ethereum 2.0", Harvard Dataverse](https://doi.org/10.7910/DVN/HG36LO)
 
 To use this data:
-1. Download the file and place it in the [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards) directory.
+> Download the file and place it in the [`aggregated_rewards`](data/raw_reward_data/aggregated_rewards) directory.
 
 ##### Dataset Overview
 | **Variable**               | **Data Type** | **Unit** |
